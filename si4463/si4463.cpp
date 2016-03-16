@@ -31,7 +31,7 @@ CSi4463::CSi4463(uint8_t nSEL, uint8_t mosi, uint8_t miso, uint8_t sck, uint8_t 
 }
 
 //------------------------------------------------------------------------------------------
-void CSi4463::setDebugSerial(Serial_* serial)
+void CSi4463::setDebugSerial(Stream* serial)
 {
     _debugSerial = serial;
 }

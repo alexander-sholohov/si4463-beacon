@@ -5,6 +5,7 @@
 //
 
 #include <Arduino.h>
+#include <Stream.h>
 
 class CSi4463
 {
@@ -18,7 +19,7 @@ class CSi4463
 public:
     CSi4463(uint8_t nSEL, uint8_t mosi, uint8_t miso, uint8_t sck, uint8_t ook);
 
-    void setDebugSerial(Serial_* serial);
+    void setDebugSerial(Stream* serial);
 
     bool initialize();
     void activateTX();
@@ -33,7 +34,7 @@ private:
     uint8_t _miso;
     uint8_t _sck;
     uint8_t _ook;
-    Serial_* _debugSerial;
+    Stream* _debugSerial;
 
     void beginCommunication();
     void endCommunication();

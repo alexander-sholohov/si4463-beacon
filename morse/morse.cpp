@@ -10,6 +10,7 @@
 #define WARMUP_PAUSE_IN_MS (3000)
 #define ENDOFTEXT_PAUSE_IN_MS (3000)
 #define LONG_RETRY_PAUSE_IN_MS (30000)
+#define LONG_CARRIER_DURATION_IN_MS (4000)
 
 
 #define MCODE(LEN, PATTERN) ( (PATTERN << 3) | ( LEN & 0x7 ) )
@@ -96,7 +97,7 @@ void CMorse::changeStateByTimeout()
     {
         // start sending
         _currentPosInText = 0;
-        MorseState state = prepareNextChar(); // possible: dit, dah, space, endoftext
+        MorseState state = prepareNextChar(); // possible: dit, dah, space, longCarrier, endoftext
         _currentTimeoutInMS = getTimeoutForState(state);
         _state = state;
     }
@@ -114,13 +115,13 @@ void CMorse::changeStateByTimeout()
     }
     else if( _state == msSendingPauseBetweenLetters )
     {
-        MorseState state = prepareNextChar();  // possible: dit, dah, space, endoftext
+        MorseState state = prepareNextChar();  // possible: dit, dah, space, longCarrier, endoftext
         _currentTimeoutInMS = getTimeoutForState(state);
         _state = state;
     }
-    else if( _state == msSendingSpace )
+    else if( _state == msSendingSpace || _state == msSendingLongCarrier )
     {
-        MorseState state = prepareNextChar();  // possible: dit, dah, space, endoftext
+        MorseState state = prepareNextChar();  // possible: dit, dah, space, longCarrier, endoftext
         _currentTimeoutInMS = getTimeoutForState(state);
         _state = state;
     }
@@ -188,6 +189,10 @@ CMorse::MorseState CMorse::prepareNextChar()
     {
         return msSendingSpace;
     }
+    else if( ch == '_' )
+    {
+        return msSendingLongCarrier;
+    }
     else
     {
         int length = 0;
@@ -250,6 +255,7 @@ bool CMorse::isTransmittingActive() const
     res =      (_state == msWarmUpPause)
             || (_state == msSendingDit)
             || (_state == msSendingDah)
+            || (_state == msSendingLongCarrier)
             || (_state == msSendingPauseBetweenDitDah)
             || (_state == msSendingPauseBetweenLetters)
             || (_state == msSendingSpace)
@@ -260,7 +266,9 @@ bool CMorse::isTransmittingActive() const
 //--------------------------------------------------------------
 bool CMorse::isToneActive() const
 {
-    return (_state == msSendingDit) || (_state == msSendingDah);
+    return     (_state == msSendingDit) 
+            || (_state == msSendingDah)
+            || (_state == msSendingLongCarrier);
 }
 
 //--------------------------------------------------------------
@@ -305,6 +313,10 @@ long CMorse::getTimeoutForState(MorseState state) const
     else if( state == msSendingSpace )
     {
         res = 7 * unitSizeX1;
+    }
+    else if( state == msSendingLongCarrier )
+    {
+        res = LONG_CARRIER_DURATION_IN_MS;
     }
     else if( state == msEndOfText )
     {

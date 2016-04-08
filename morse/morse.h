@@ -20,6 +20,7 @@ class CMorse
         msSendingPauseBetweenDitDah,
         msSendingPauseBetweenLetters,
         msSendingSpace,
+        msSendingLongCarrier,
         msEndOfText,
         msLongPauseBetweenRepeat
     };

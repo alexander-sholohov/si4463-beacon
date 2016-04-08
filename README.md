@@ -15,9 +15,9 @@ For ISM frequency details please refer to: https://en.wikipedia.org/wiki/ISM_ban
 Don't forget to setup your own beacon text in si4463-beacon.ino:32 - morse.setText() 
 
 Supported symbols:
-Digits  0-9
-Letters  A-Z
-Forward slash /
-Underscore: _ (4 seconds long continious carrier)
+Digits  0-9;
+Letters  A-Z;
+Forward slash /;
+Underscore: _ (4 seconds long continious carrier).
 
 Alexander Sholohov <ra9yer@yahoo.com>

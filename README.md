@@ -9,10 +9,15 @@ Please, examine ./doc/WDS/ for details.
 
 
 Si4463 is able to cover 2m range as well (119MHz - 159MHz).
-Please note! Without having amateur radio licence you are very limited in frequency range and transmittion power. Especially using external antenna AND/OR without proper LPF.
+Please note! Without having amateur radio licence you are very limited in frequency range and transmittion power. Especially using external antenna and/or without proper LPF.
 For ISM frequency details please refer to: https://en.wikipedia.org/wiki/ISM_band
 
 Don't forget to setup your own beacon text in si4463-beacon.ino:32 - morse.setText() 
 
+Supported symbols:
+Digits  0-9
+Letters  A-Z
+Forward slash /
+Underscore: _ (4 seconds long continious carrier)
 
 Alexander Sholohov <ra9yer@yahoo.com>

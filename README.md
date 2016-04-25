@@ -5,7 +5,7 @@ This CW beacon is built on Arduino + si4463 module.
 
 To configure si4463 you need desktop application from Silabs named "Wireless Development Suite".
 As a result you will have ./si4463/radio/radio_config.h 
-For details please exprore folder ./doc/WDS/*.gpg 
+| For details please exprore folder ./doc/WDS/*.jpg 
 
 
 Si4463 is able to cover 2m band as well (119MHz - 159MHz).

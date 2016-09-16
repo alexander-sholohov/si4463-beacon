@@ -22,6 +22,7 @@ Supported symbols:
 
 
 After downloading, rename folder to 'si4463-beacon'.
+The project was tested in Arduino 1.6.7 development environment. If you have any problems in sketch compiling please use exactly this version.
 
 
 Alexander Sholohov <ra9yer@yahoo.com>

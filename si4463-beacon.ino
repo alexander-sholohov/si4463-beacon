@@ -1,7 +1,7 @@
 
 
-#include "morse/morse.h"
-#include "si4463/si4463.h"
+#include "src/morse/morse.h"
+#include "src/si4463/si4463.h"
 
 
 const int nSEL = 7; // out

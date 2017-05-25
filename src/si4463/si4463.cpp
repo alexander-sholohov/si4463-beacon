@@ -10,8 +10,11 @@
 // TODO: switch data segment PROGMEM
 const byte Radio_Configuration_Data_Array[]  = RADIO_CONFIGURATION_DATA_ARRAY;
 
+#ifndef _NOP
+#define _NOP() do { __asm__ volatile ("nop"); } while (0)
+#endif
 
-#define MYNOP _NOP
+#define MYNOP() _NOP()
 
 #ifndef NO_MY_DEBUG
 #define MYDEBUG(STR) do{ if(_debugSerial) { _debugSerial->println(F(STR)); } }while(0)

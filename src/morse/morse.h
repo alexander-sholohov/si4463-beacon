@@ -28,6 +28,7 @@ class CMorse
 public:
     CMorse();
     void setText(const char* text);
+    void setUnitDurationInMs( long unitDurationInMs );
     void handleTimeout();
     bool isTransmittingActive() const;
     bool isToneActive() const;
@@ -48,6 +49,8 @@ private:
 
     unsigned char _currentUtitsPattern;
     int _numUnitsRest;
+
+    long _unitDurationInMs;
 
     MorseState prepareNextChar();
     MorseState prepareNextDitDah();

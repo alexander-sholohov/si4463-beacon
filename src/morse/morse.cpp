@@ -6,7 +6,7 @@
 #include <string.h>
 
 // configurable params
-#define UNITSIZE_IN_MS (150)
+#define DEFAULT_UNIT_DURATION_IN_MS (150)
 #define WARMUP_PAUSE_IN_MS (3000)
 #define ENDOFTEXT_PAUSE_IN_MS (3000)
 #define LONG_RETRY_PAUSE_IN_MS (30000)
@@ -69,6 +69,13 @@ CMorse::CMorse()
     _text[0] = 0;
     _state = msStopped;
     _currentPosInText = 0;
+    _unitDurationInMs = DEFAULT_UNIT_DURATION_IN_MS;
+}
+
+//--------------------------------------------------------------
+void CMorse::setUnitDurationInMs( long unitDurationInMs )
+{
+    _unitDurationInMs = unitDurationInMs;
 }
 
 //--------------------------------------------------------------
@@ -288,7 +295,7 @@ long CMorse::getTimeoutForState(MorseState state) const
 {
     long res = 0;
 
-    long unitSizeX1 = UNITSIZE_IN_MS; // dit duration
+    long unitSizeX1 = _unitDurationInMs; // dit duration
 
     if( state == msWarmUpPause )
     {

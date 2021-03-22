@@ -9,7 +9,7 @@ As a result you will have ./si4463/radio/radio_config.h
 
 
 Si4463 is able to cover 2m band as well (119MHz - 159MHz).
-Please note! Without having amateur radio licence you are very limited in frequency range and transmittion power. Especially using external antenna and/or without proper LPF.
+Please note! Without having amateur radio licence you are very limited in frequency range and transmittion power. Especially with external antenna without proper LPF.
 For ISM frequency details please refer to: https://en.wikipedia.org/wiki/ISM_band
 
 Don't forget to setup your own beacon text in si4463-beacon.ino:32 - morse.setText() 
@@ -17,12 +17,13 @@ Don't forget to setup your own beacon text in si4463-beacon.ino:32 - morse.setTe
 Supported symbols:
  * Digits  0-9;
  * Letters  A-Z;
+ * Space;
  * Forward slash /;
- * Underscore: _ (4 seconds long continious carrier).
+ * Underscore: _ (continious carrier 4 seconds long).
 
 
-After downloading, rename folder to 'si4463-beacon'.
-The project was tested in Arduino 1.6.7 development environment. If you have any problems in sketch compiling please use exactly this version.
+After downloading, rename the folder to 'si4463-beacon' if it isn't so.
 
+[Discussion Thread(in Russian)](http://forum.22dx.ru/viewtopic.php?f=15&t=130)
 
 Alexander Sholohov <ra9yer@yahoo.com>
